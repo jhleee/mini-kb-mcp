@@ -3,8 +3,8 @@
 import logging
 from pathlib import Path
 
-from ..db.sqlite import SQLiteDB
-from ..parser.markdown import MarkdownParser
+from mini_docs_mcp.db.sqlite import SQLiteDB
+from mini_docs_mcp.parser.markdown import MarkdownParser
 
 logger = logging.getLogger(__name__)
 

@@ -6,15 +6,15 @@ from pathlib import Path
 
 from fastmcp import FastMCP
 
-from .db.sqlite import SQLiteDB
-from .db.vector import VectorDB, create_default_embedding_function
-from .parser.markdown import MarkdownParser
-from .resources.vault import VaultResources
-from .tools.link import LinkEngine
-from .tools.read import ReadEngine
-from .tools.search import SearchEngine
-from .tools.write import WriteEngine
-from .watcher.sync import VaultSyncer, VaultWatcher
+from mini_docs_mcp.db.sqlite import SQLiteDB
+from mini_docs_mcp.db.vector import VectorDB, create_default_embedding_function
+from mini_docs_mcp.parser.markdown import MarkdownParser
+from mini_docs_mcp.resources.vault import VaultResources
+from mini_docs_mcp.tools.link import LinkEngine
+from mini_docs_mcp.tools.read import ReadEngine
+from mini_docs_mcp.tools.search import SearchEngine
+from mini_docs_mcp.tools.write import WriteEngine
+from mini_docs_mcp.watcher.sync import VaultSyncer, VaultWatcher
 
 # Configure logging
 logging.basicConfig(

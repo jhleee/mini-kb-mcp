@@ -1,0 +1,17 @@
+{
+  "name": "mini-docs-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for intelligent Markdown knowledge base with semantic search and bidirectional linking",
+  "entrypoint": "src/mini_docs_mcp/server.py:mcp",
+  "python": "3.11",
+  "environment": {
+    "VAULT_PATH": "/data/vault",
+    "MCP_TRANSPORT": "sse",
+    "MCP_HOST": "0.0.0.0",
+    "MCP_PORT": "8000"
+  },
+  "deployment": {
+    "transport": "sse",
+    "port": 8000
+  }
+}

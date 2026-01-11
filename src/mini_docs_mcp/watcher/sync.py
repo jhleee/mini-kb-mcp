@@ -9,9 +9,9 @@ from pathlib import Path
 from watchdog.events import FileSystemEvent, FileSystemEventHandler
 from watchdog.observers import Observer
 
-from ..db.sqlite import Edge, Node, SQLiteDB
-from ..db.vector import VectorDB, chunk_text
-from ..parser.markdown import MarkdownParser
+from mini_docs_mcp.db.sqlite import Edge, Node, SQLiteDB
+from mini_docs_mcp.db.vector import VectorDB, chunk_text
+from mini_docs_mcp.parser.markdown import MarkdownParser
 
 logger = logging.getLogger(__name__)
 

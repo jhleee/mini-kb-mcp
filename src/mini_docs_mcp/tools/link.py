@@ -3,9 +3,9 @@
 import logging
 from pathlib import Path
 
-from ..db.sqlite import Edge, SQLiteDB
-from ..parser.markdown import MarkdownParser
-from .write import WriteEngine
+from mini_docs_mcp.db.sqlite import Edge, SQLiteDB
+from mini_docs_mcp.parser.markdown import MarkdownParser
+from mini_docs_mcp.tools.write import WriteEngine
 
 logger = logging.getLogger(__name__)
 
