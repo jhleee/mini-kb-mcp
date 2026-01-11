@@ -72,6 +72,23 @@ src/mini_docs_mcp/
 | `get_note_graph` | Graph context (2-hop) |
 | `sync_status` | Force sync |
 
+## Deployment
+
+### FastMCP Cloud
+
+This project is optimized for deployment to [FastMCP Cloud](https://fastmcp.cloud):
+
+- **Configuration**: `fastmcp.json` in project root
+- **Entrypoint**: `src/mini_docs_mcp/server.py:mcp`
+- **Dependencies**: Auto-detected from `pyproject.toml`
+- **Transport**: SSE (Server-Sent Events) for HTTP access
+
+### Docker
+
+Use `docker-compose.yaml` for local Docker deployment:
+- SSE server on configurable port (default: 8000)
+- Environment variables in `.env` file
+
 ## Coding Conventions
 
 - Type hints required

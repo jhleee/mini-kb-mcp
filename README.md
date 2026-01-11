@@ -79,6 +79,27 @@ The server supports SSE (Server-Sent Events) transport mode for HTTP access, per
 
 The SSE server will be accessible at `http://localhost:8000` (or your configured port).
 
+### FastMCP Cloud Deployment
+
+Deploy to [FastMCP Cloud](https://fastmcp.cloud/) for a free, managed hosting solution (currently in beta):
+
+1. **Sign in** to [fastmcp.cloud](https://fastmcp.cloud) with your GitHub account
+
+2. **Create a new project**:
+   - Select this repository from your GitHub account
+   - FastMCP Cloud will automatically detect your `pyproject.toml` dependencies
+   - The `fastmcp.json` configuration file will be used for deployment settings
+
+3. **Configure your project**:
+   - **Name**: `mini-docs-mcp` (or your preferred name)
+   - **Entrypoint**: `src/mini_docs_mcp/server.py:mcp` (auto-detected from `fastmcp.json`)
+   - **Authentication**: Enable if you want to restrict access to your organization
+   - **Environment Variables**: Configure `VAULT_PATH`, `MCP_TRANSPORT`, etc. (defaults in `fastmcp.json`)
+
+4. **Deploy** and get your unique server URL
+
+For detailed deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md).
+
 ### Claude Desktop Integration
 
 Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS):
