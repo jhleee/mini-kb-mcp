@@ -43,6 +43,42 @@ python -m mini_docs_mcp.server
 VAULT_PATH=/path/to/your/vault python -m mini_docs_mcp.server
 ```
 
+### Docker Deployment
+
+The server supports SSE (Server-Sent Events) transport mode for HTTP access, perfect for Docker deployments:
+
+1. **Create a `.env` file** (copy from `.env.example`):
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Configure your settings** in `.env`:
+   ```bash
+   # Transport mode: stdio or sse
+   MCP_TRANSPORT=sse
+
+   # SSE server configuration
+   MCP_HOST=0.0.0.0
+   MCP_PORT=8000
+   ```
+
+3. **Start the server**:
+   ```bash
+   docker-compose up -d
+   ```
+
+4. **Change port** (edit `.env` and restart):
+   ```bash
+   # In .env file
+   MCP_PORT=9000
+
+   # Restart container
+   docker-compose down
+   docker-compose up -d
+   ```
+
+The SSE server will be accessible at `http://localhost:8000` (or your configured port).
+
 ### Claude Desktop Integration
 
 Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS):

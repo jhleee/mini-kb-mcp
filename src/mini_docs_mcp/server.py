@@ -459,7 +459,7 @@ def main():
         host = os.environ.get("MCP_HOST", "0.0.0.0")
         port = int(os.environ.get("MCP_PORT", "8000"))
         logger.info(f"Starting SSE server on {host}:{port}")
-        mcp.run(transport="sse", sse_params={"host": host, "port": port})
+        mcp.run(transport="sse", host=host, port=port)
     else:
         logger.info("Starting stdio server")
         mcp.run()
