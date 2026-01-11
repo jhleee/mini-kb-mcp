@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: mini-docs-mcp
     ports:
-      - "8000:8000"
+      - "${MCP_PORT:-8000}:${MCP_PORT:-8000}"
     volumes:
       # Mount your vault directory
       - ./vault:/app/vault
@@ -17,12 +17,12 @@ services:
       - VAULT_PATH=/app/vault
       - PYTHONUNBUFFERED=1
       # SSE transport configuration
-      - MCP_TRANSPORT=sse
-      - MCP_HOST=0.0.0.0
-      - MCP_PORT=8000
+      - MCP_TRANSPORT=${MCP_TRANSPORT:-sse}
+      - MCP_HOST=${MCP_HOST:-0.0.0.0}
+      - MCP_PORT=${MCP_PORT:-8000}
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "python", "-c", "import socket; s=socket.socket(); s.connect(('localhost', 8000)); s.close()"]
+      test: ["CMD", "python", "-c", "import socket; s=socket.socket(); s.connect(('localhost', ${MCP_PORT:-8000})); s.close()"]
       interval: 30s
       timeout: 10s
       retries: 3
