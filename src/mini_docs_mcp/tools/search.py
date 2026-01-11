@@ -2,8 +2,8 @@
 
 import logging
 
-from ..db.sqlite import SQLiteDB
-from ..db.vector import VectorDB
+from mini_docs_mcp.db.sqlite import SQLiteDB
+from mini_docs_mcp.db.vector import VectorDB
 
 logger = logging.getLogger(__name__)
 
