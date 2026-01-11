@@ -457,7 +457,7 @@ class TestLinkOperations:
 
         orphans = link.find_orphans()
         # Some notes might be orphans
-        orphan_ids = [o["id"] for o in orphans]
+        _orphan_ids = [o["id"] for o in orphans]
         # After our tests, most notes should be connected
         assert isinstance(orphans, list)
 
@@ -520,7 +520,7 @@ class TestSyncOperations:
         note_path.write_text(original + "\n\n## New Section\n\nAdded externally.", encoding="utf-8")
 
         # Check consistency - should detect mismatch
-        report = syncer.check_consistency()
+        _report = syncer.check_consistency()
         # May or may not be consistent depending on timing
 
         # Full sync should fix it

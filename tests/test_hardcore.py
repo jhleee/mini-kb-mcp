@@ -143,7 +143,7 @@ status: {"verified" if random.random() > 0.3 else "draft"}
     # Run initial sync
     syncer = VaultSyncer(vault_path, sqlite_db, vector_db, parser)
     start_time = time.time()
-    stats = syncer.full_sync()
+    _stats = syncer.full_sync()
     sync_time = time.time() - start_time
 
     # Create engines
@@ -383,7 +383,6 @@ class TestConcurrency:
         """Test reading and writing simultaneously."""
         read = large_vault["read_engine"]
         write = large_vault["write_engine"]
-        vault_path = large_vault["vault_path"]
 
         errors = []
         lock = threading.Lock()
@@ -530,7 +529,6 @@ class TestEdgeCasesHardcore:
         """Handle edge case document contents."""
         write = large_vault["write_engine"]
         read = large_vault["read_engine"]
-        search = large_vault["search_engine"]
 
         test_cases = [
             ("minimal-doc", "# Title\n"),
@@ -621,14 +619,14 @@ Based on reading [[{top_result['id']}]]
         # Step 4: User links to related content
         related = search.find_similar(top_result["id"], top_k=3)
         if related:
-            link_result = link.link_notes(
+            _link_result = link.link_notes(
                 "my-design-patterns-notes", related[0]["id"], "Related concept"
             )
             # May or may not succeed depending on existing links
 
         # Step 5: User searches again to verify
         new_results = search.search("my design patterns notes", top_k=5)
-        found_new = any("my-design-patterns" in r["id"] for r in new_results["results"])
+        _found_new = any("my-design-patterns" in r["id"] for r in new_results["results"])
         # Note: might not be found immediately without re-sync
 
     def test_project_documentation_workflow(self, large_vault):
@@ -707,7 +705,6 @@ Continue with related work.
     def test_research_workflow(self, large_vault):
         """Simulate research and learning workflow."""
         write = large_vault["write_engine"]
-        read = large_vault["read_engine"]
         link = large_vault["link_engine"]
         search = large_vault["search_engine"]
 
@@ -784,7 +781,7 @@ This has broken YAML.
 
         # Sync should handle gracefully (may skip or use defaults)
         try:
-            stats = syncer.full_sync()
+            _stats = syncer.full_sync()
             # Should not crash
             assert True
         except Exception as e:
